@@ -1,9 +1,7 @@
 <template>
 <div id = "app">
  <div id ="beforeLogin" v-if="!isAuthentication">
-  <h1> Witaj w systemie zapisu na zajecia !!!</h1>
-  <span>Zaloguj sie e-mailem: </span> <input type="email" v-model="email">
-  <button @click="toogle()">Wchodze</button>
+  <login-form @login="toogle($event)" ></login-form>
  </div >
  <div id= "afterLogin" v-else>
    <h1> Witaj w systemie zapisu na zajecia !!!</h1>
@@ -15,8 +13,11 @@
 
 <script>
 import "milligram";
+import LoginForm from "./LoginForm";
+
 export default {
 name: 'app',
+components: {LoginForm},
   data() {
     return {
       email: '',
@@ -24,8 +25,9 @@ name: 'app',
     }
   },
   methods: {
-  toogle() {
+  toogle(mail) {
     this.isAuthentication = !this.isAuthentication;
+    this.email=mail;
     
   },
   toogle2() {
