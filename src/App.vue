@@ -4,9 +4,7 @@
   <login-form @login="toogle($event)" ></login-form>
  </div >
  <div id= "afterLogin" v-else>
-   <h1> Witaj w systemie zapisu na zajecia !!!</h1>
-   <h2>Witaj {{email}}</h2>
-   <button @click="toogle2()">Wyloguj</button>
+   <login-out :username="loginfo" @logout="toogle($event)" ></login-out>
  </div>
 </div>
 </template>
@@ -14,25 +12,23 @@
 <script>
 import "milligram";
 import LoginForm from "./LoginForm";
-
+import LoginOut from "./LoginOut";
 export default {
 name: 'app',
-components: {LoginForm},
+components: {LoginForm, LoginOut},
   data() {
     return {
       email: '',
-      isAuthentication: false
+      isAuthentication: false,
+      loginfo: ''
     }
   },
   methods: {
   toogle(mail) {
     this.isAuthentication = !this.isAuthentication;
     this.email=mail;
+    this.loginfo = mail;
     
-  },
-  toogle2() {
-    this.isAuthentication = !this.isAuthentication;
-    this.email ="";
   }
  }
 }
