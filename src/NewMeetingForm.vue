@@ -5,7 +5,8 @@
             <input type="text" v-model="newMeeting.name">
             <label>Opis</label>
             <textarea v-model="newMeeting.description"></textarea>
-            <button>Dodaj</button>
+            <button @click ="toogle">Dodaj</button>
+            <label id="emptyState" v-if="!flag"> Spotkanie musi miec nazwe</label>
         </form>
 </template>
 
@@ -13,13 +14,28 @@
 export default {
   data() {
       return {
-          newMeeting: {}
+          flag: true,
+          newMeeting: {
+          participants: []
+          }
+          
       };
   },
   methods: {
       addNewMeeting() {
+      if(this.newMeeting.name!=undefined && this.newMeeting.name.length>0)
+      {
         this.$emit('added', this.newMeeting);
-        this.newMeeting = {};
+        this.newMeeting = {participants: []};
+
+        }else
+        {
+        this.flag = false;
+        }
+    },
+    toogle(){
+    this.$emit('switchAgain', '');
+
     }
   }
 }

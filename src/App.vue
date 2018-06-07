@@ -5,7 +5,7 @@
  </div >
  <div id= "afterLogin" v-else>
    <login-out :username="loginfo" @logout="toogle($event)" ></login-out>
-   <meeting-page></meeting-page>
+   <meeting-page :username="loginfo"></meeting-page>
  </div>
 </div>
 </template>
@@ -38,12 +38,13 @@ components: {LoginForm, LoginOut, MeetingPage},
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+ 
+}
+#outbutton{
+display: inline;
+position: absolute;
+    left: 80%;
+    top: 15%;
 }
 h1 {
   font-weight: normal;
@@ -51,5 +52,8 @@ h1 {
 }
 .info{
 color: green;
+}
+#emptyState{
+color: red;
 }
 </style>
