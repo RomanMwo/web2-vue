@@ -5,6 +5,7 @@
  </div >
  <div id= "afterLogin" v-else>
    <login-out :username="loginfo" @logout="toogle($event)" ></login-out>
+   <meeting-page></meeting-page>
  </div>
 </div>
 </template>
@@ -13,9 +14,10 @@
 import "milligram";
 import LoginForm from "./LoginForm";
 import LoginOut from "./LoginOut";
+import MeetingPage from "./MeetingPage";
 export default {
 name: 'app',
-components: {LoginForm, LoginOut},
+components: {LoginForm, LoginOut, MeetingPage},
   data() {
     return {
       email: '',
@@ -43,8 +45,11 @@ components: {LoginForm, LoginOut},
   color: #2c3e50;
   margin-top: 60px;
 }
-h1, h2 {
+h1 {
   font-weight: normal;
   color: red;
+}
+.info{
+color: green;
 }
 </style>

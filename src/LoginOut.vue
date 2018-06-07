@@ -1,7 +1,7 @@
 <template>
 <div>
 <h1> Witaj w systemie zapisu na zajecia !!!</h1>
-   <h2>Witaj {{username}}</h2>
+   <h2><span class="info">Witaj</span> {{username}}</h2>
    <button @click="out()">{{buttonLabelToDisplay}}</button>
   </div>
 </template>
